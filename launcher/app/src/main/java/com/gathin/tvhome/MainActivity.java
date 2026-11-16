@@ -484,6 +484,22 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // the theme's background, so launch looks the same.
         getWindow().setBackgroundDrawable(null);
         wallpaperPlayer = new WallpaperPlayer(this, root, cfg);
+        // SOUVIK wordmark: fixed above the dock and independent of the focused app title.
+        android.widget.TextView souvikBrand = new android.widget.TextView(this);
+        souvikBrand.setTag("souvik_brand");
+        souvikBrand.setText("SOUVIK");
+        souvikBrand.setTextColor(0xFFB7E7FF);
+        souvikBrand.setTextSize(22f);
+        souvikBrand.setLetterSpacing(0.28f);
+        souvikBrand.setTypeface(android.graphics.Typeface.create("sans-serif", android.graphics.Typeface.BOLD));
+        souvikBrand.setShadowLayer(12f * density, 0f, 0f, 0xFF009DFF);
+        android.widget.FrameLayout.LayoutParams souvikBrandParams =
+                new android.widget.FrameLayout.LayoutParams(
+                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                        android.view.Gravity.TOP | android.view.Gravity.CENTER_HORIZONTAL);
+        souvikBrandParams.topMargin = (int) (22 * density);
+        root.addView(souvikBrand, souvikBrandParams);
         sky = findViewById(R.id.sky);
         sky.setIntensity(cfg.skyIntensity);
         glass = findViewById(R.id.glass);
